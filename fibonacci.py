@@ -35,5 +35,12 @@ def fibonacci_succinct(parMax : int):
     first_parMax = islice(fibonacci(), 0, parMax)
     return sum(1 for f in first_parMax if is_odd(f))
 
+def fac(maxN : int):
+    i,j = 0,1
+    while not(i > maxN):
+        yield i,j
+        i, j = (i+1), j * (i+1)
+
 print(fibonacci_generator(5000))
 print(fibonacci_succinct(19))
+print(list(fac(12)))
