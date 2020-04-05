@@ -18,20 +18,22 @@ def fibonacci_naive():
     return count
 
 
-def fibonacci_generator():
+def fibonacci_generator(parMax : int):
     count = 0
     for f in fibonacci():
         print(f)
-        if f > 5000:
+        if f > parMax:
             break
         if (f % 2):
             count += 1
     return count
 
 
-def fibonacci_succinct():
+def fibonacci_succinct(parMax : int):
     is_odd = lambda x: x % 2
-    first_5000 = islice(fibonacci(), 0, 5000)
-    return sum(1 for x in first_5000 if is_odd(x))
+    # islice takes the first parMax Fibonacci numbers and not all Fibonacci number smaller parMax
+    first_parMax = islice(fibonacci(), 0, parMax)
+    return sum(1 for f in first_parMax if is_odd(f))
 
-print(fibonacci_generator())
+print(fibonacci_generator(5000))
+print(fibonacci_succinct(19))
