@@ -1,10 +1,10 @@
 import random as rdn
 
-n = 10
+n = 6
 index = range(n)
 a_i = []
 for i in index:
-    a_i.append(rdn.randint(-10,10))
+    a_i.append(rdn.randint(-10 ,0))
 
 teilSummen = []
 nrAdditionen = 0
@@ -37,12 +37,13 @@ for i in index:
 print(teilSummen,nrAdditionen)
 
 
+maxTeilsumme = a_i[0]
+dummy = 0
+for i in index:
+    if a_i[i] > 0:
+        dummy = max(dummy,0) + a_i[i]
+    else:
+        dummy = a_i[i]
+    maxTeilsumme = max(maxTeilsumme,dummy)
 
-
-
-
-
-
-
-
-
+print(maxTeilsumme)
