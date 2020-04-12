@@ -1,6 +1,8 @@
 import sqlite3 as sql
 import uuid
 import scipy.spatial
+import math
+from multiprocessing import pool
 
 def hwRNG():
     i = 0
@@ -31,7 +33,7 @@ i = 0
 
 # Datenbank fuellen
 while i < nMax:
-    lon = (uuid.uuid4().int / 2**128 * 360)
+    lon = (uuid.uuid4().int / 2**128 * 2 * pi)
     lat = (uuid.uuid4().int / 2**128 * 360)
     sql = 'INSERT INTO tblPosition VALUES ' + str((i, lon, lat))
     curs.execute(sql)
@@ -45,8 +47,8 @@ nMax = 10000000
 data = []
 kern = []
 while i < nMax:
-    lon = (uuid.uuid4().int / 2 ** 128 * 360)
-    lat = (uuid.uuid4().int / 2 ** 128 * 360)
+    lon = (uuid.uuid4().int / 2 ** 127 * math.pi)
+    lat = (uuid.uuid4().int / 2 ** 127 * math.pi)
     data.append((i,lon,lat))
     kern.append((lon,lat))
     i = i +1
