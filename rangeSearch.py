@@ -28,7 +28,7 @@ sql ='DELETE FROM tblPosition'
 curs.execute(sql)
 conn.commit()
 
-nMax = 1000
+nMax = 10_000_000
 i = 0
 
 # Datenbank fuellen
@@ -42,8 +42,10 @@ while i < nMax:
 conn.commit()
 conn.close()
 
+print('database closed')
+
 i = 0
-nMax = 10000000
+nMax = 10_000_000
 data = []
 kern = []
 while i < nMax:
